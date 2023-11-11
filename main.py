@@ -1,11 +1,6 @@
-import os
 import argparse
-import numpy as np 
 import pandas as pd 
-import seaborn as sns
-import matplotlib.pyplot as plt
 
-from agent import RANDOMSEARCH
 from agent import RLSEARCH
 
 all = ['D3', 'D7', 'D14', 'NEWS']

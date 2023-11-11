@@ -1,10 +1,8 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 
 from time import sleep
 from agent import RLSEARCH
-from collections import deque
 
 # RL agent
 factors = ['D3', 'D7', 'D14', 'NEWS']

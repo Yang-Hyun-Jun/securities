@@ -1,13 +1,9 @@
 import torch
 import random
-import torch.nn as nn 
-import numpy as np
 
-from tqdm import tqdm
 from collections import deque
 from backtester import BackTester
 from torch.optim import Adam
-from torch.optim import SGD
 from torch.nn import MSELoss
 from network import Mask
 from network import Rnet

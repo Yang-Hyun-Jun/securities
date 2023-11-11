@@ -1,7 +1,4 @@
 import numpy as np 
-
-from typing import List
-from typing import Tuple
 from typing import Iterable
 
 class Portfolio:
