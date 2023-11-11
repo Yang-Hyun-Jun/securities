@@ -3,3 +3,5 @@ numpy
 pandas
 torch
 matplotlib
+tqdm 
+seaborn
