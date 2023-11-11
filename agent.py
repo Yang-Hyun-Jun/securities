@@ -76,7 +76,7 @@ class RLSEARCH(BackTester):
             weight = self.get_w()
             self.init(weight.detach().numpy())
             result = self.test(start, end)[-1]
-            reward = get_r(result)
+            reward = self.get_r(result)
 
             self.w_tensor.append(weight)
             self.r_tensor.append(reward)
