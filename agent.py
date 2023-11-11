@@ -23,7 +23,7 @@ class RLSEARCH(BackTester):
         self.mse = MSELoss()
 
         self.opt_r = Adam(self.rnet.parameters(), lr=1e-4)
-        self.opt_a = Adam(self.mnet.parameters(), lr=7e-3)
+        self.opt_a = Adam(self.mnet.parameters(), lr=8e-3)
 
         self.w_tensor = deque(maxlen=500)
         self.r_tensor = deque(maxlen=500)
