@@ -20,7 +20,7 @@ config = {
 
 RLsearch = RLSEARCH(config)
 
-iter = 700
+iter = 200
 train_start = '2023-01'
 train_end = '2023-09'
 test_start = '2023-01'
