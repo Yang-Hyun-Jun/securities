@@ -28,7 +28,10 @@ class RLSEARCH(BackTester):
 
         self.opt_r = Adam(self.rnet.parameters(), lr=1e-4)
         self.opt_a = Adam(self.mnet.parameters(), lr=7e-3)
-    
+
+        self.w_tensor = deque(maxlen=500)
+        self.r_tensor = deque(maxlen=500)
+
     def save(self, path):
         torch.save(self.mnet.state_dict(), path)
         torch.save(self.rnet.state_dict(), path)
@@ -43,7 +46,7 @@ class RLSEARCH(BackTester):
         """
         결과 메트릭으로부터 reward 계산
         """
-        reward = result['sharpe']
+        reward = result['profit']
         reward = torch.tensor([reward])
         return reward
         
@@ -70,25 +73,21 @@ class RLSEARCH(BackTester):
         """
         RL 에이전트 학습 Loop
         """
-        
-        w_tensor = deque(maxlen=500)
-        r_tensor = deque(maxlen=500)
-        score = 0
+
         batch_size = 32
 
-        for i in tqdm(range(iter)):
+        for i in range(iter):
             weight = self.get_w()
             self.init(weight.detach().numpy())
             result = self.test(start, end)[-1]
-            reward = get_r(result)
+            reward = self.get_r(result)
 
-            score += 0.01 * (reward.item() - score)
-            w_tensor.append(weight)
-            r_tensor.append(reward)
+            self.w_tensor.append(weight)
+            self.r_tensor.append(reward)
 
-            if len(w_tensor) >= batch_size:
-                w_batch = random.sample(w_tensor, batch_size)
-                r_batch = random.sample(r_tensor, batch_size)
+            if len(self.w_tensor) >= batch_size:
+                w_batch = random.sample(self.w_tensor, batch_size)
+                r_batch = random.sample(self.r_tensor, batch_size)
                 w_batch = torch.stack(w_batch).float().to(device)
                 r_batch = torch.stack(r_batch).float().to(device)
                 self.update(w_batch, r_batch)

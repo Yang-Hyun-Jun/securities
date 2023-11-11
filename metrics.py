@@ -34,7 +34,7 @@ class Metrics:
         """
         샤프지수
         """
-        free = (0.04) / 12
+        free = (0.035) / 250
         pvs = np.array(pvs)
         pct = (pvs[1:] - pvs[:-1]) / pvs[:-1]
         ratio = np.mean(pct - free) / np.std(pct)

@@ -1,7 +1,7 @@
 import openai
 import re
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 
 def set_reward_by_gpt(prompt:str =None):
@@ -45,3 +45,10 @@ def set_reward_by_gpt(prompt:str =None):
         file.write(code_block)
 
     return code_block
+
+
+prompt = "다음 벡터의 각 원소는 팩터 투자에서 각 팩터의 중요도를 나타낸다. \
+        첫번째 인덱스는 3일 주가 모멘텀의 중요도, \
+        두번째 인덱스는 7일 주가 모멘텀의 중요도, \
+        세번째 인덱스는 14일 주가 모멘텀의 중요도를 나타낸다. \
+        입력 받은 예를 들어서 "

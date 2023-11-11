@@ -204,8 +204,9 @@ class BackTester(Metrics, FactorManager):
         SI = round(self.get_si(PVs), 4)
         SR = round(self.get_sr(PVs), 4)
         MDD = round(self.get_mdd(PVs), 4)
+        PF = (PVs[-1] - PVs[0]) / PVs[0]
 
-        Result = {'sharpe': SR, 'mdd': MDD, 'expect':ER, 'sigma':SI}
+        Result = {'sharpe': SR, 'mdd': MDD, 'expect':ER, 'sigma':SI, 'profit':PF}
         
         return PVs, PFs, TIs, POs, Result    
         
