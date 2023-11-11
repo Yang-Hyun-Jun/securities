@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 
 from time import sleep
-from chatgpt import set_reward_by_gpt
 from agent import RLSEARCH
 from collections import deque
 

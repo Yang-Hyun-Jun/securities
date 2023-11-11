@@ -15,7 +15,7 @@ from reward import get_r
 
 torch.set_printoptions(sci_mode=False)
 
-device = 'cuda'
+device = 'cpu'
 
 class RLSEARCH(BackTester):
     def __init__(self, config):

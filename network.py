@@ -4,7 +4,7 @@ import torch.nn as nn
 import pandas as pd
 import numpy as np
 
-device = 'cuda'
+device = 'cpu'
 
 class Hard(torch.autograd.Function):
     """
