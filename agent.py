@@ -70,13 +70,13 @@ class RLSEARCH(BackTester):
         RL 에이전트 학습 Loop
         """
 
-        batch_size = 32
+        batch_size = 64
 
         for i in range(iter):
             weight = self.get_w()
             self.init(weight.detach().numpy())
             result = self.test(start, end)[-1]
-            reward = self.get_r(result)
+            reward = get_r(result)
 
             self.w_tensor.append(weight)
             self.r_tensor.append(reward)
