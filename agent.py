@@ -42,7 +42,12 @@ class RLSEARCH(BackTester):
         """
         결과 메트릭으로부터 reward 계산
         """
-        reward = result['profit']
+        sharpe = result['sharpe']
+        expect = result['expect']
+        sigma = result['sigma']
+        mdd = result['mdd']
+        
+        reward = sharpe + (expect / sigma) - (mdd * sigma)
         reward = torch.tensor([reward])
         return reward
         
@@ -70,7 +75,7 @@ class RLSEARCH(BackTester):
         RL 에이전트 학습 Loop
         """
 
-        batch_size = 64
+        batch_size = 32
 
         for i in range(iter):
             weight = self.get_w()
