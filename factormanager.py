@@ -93,7 +93,7 @@ class FactorManager:
             if not self.scores_by_date else self.scores_by_date
         
         func1 = lambda df:df.apply(self.weight_func)
-        func2 = lambda df:df.sum(axis=1).rank(method='first', ascending=False)
+        func2 = lambda df:df.sum(axis=1).rank(ascending=False)
 
         rank_all = map(func1, self.scores_by_date)
         rank_all = map(func2, rank_all)
@@ -111,7 +111,7 @@ class FactorManager:
         
 
     def rankin_func(self, series):
-        return series.rank(method='first')
+        return series.rank()
     
     def weight_func(self, series):
         return series*self.weight_dict[series.name]
