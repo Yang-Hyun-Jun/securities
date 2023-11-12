@@ -118,4 +118,5 @@ if len(prompt) > 0:
         index=RLsearch.price[test_start:test_end].index
         )
     
+    cols[2].write("**Portfolio Value**")
     cols[2].line_chart(chart_data, color=['#005eff', '#c8c8c8'])
