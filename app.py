@@ -20,7 +20,7 @@ RLsearch = RLSEARCH(config)
 
 iter = 200
 train_start = '2023-01'
-train_end = '2023-03'
+train_end = '2023-09'
 test_start = '2023-01'
 test_end = '2023-09'
 
@@ -54,8 +54,8 @@ if len(prompt) > 0:
     RLsearch.init(optimal)
     PVs, PFs, TIs, POs, result = RLsearch.test(test_start, test_end)
 
-    RLsearch.config['Factors'] = ['D3', 'D7', 'D14']
-    RLsearch.config['Dim'] = len(['D3', 'D7', 'D14'])
+    # RLsearch.config['Factors'] = ['D3', 'D7', 'D14']
+    # RLsearch.config['Dim'] = len(['D3', 'D7', 'D14'])
     RLsearch.init(None)
     PVs_BM, _, _, _, _ = RLsearch.test(test_start, test_end)
 
