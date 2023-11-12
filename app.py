@@ -54,8 +54,8 @@ if len(prompt) > 0:
     RLsearch.init(optimal)
     PVs, PFs, TIs, POs, result = RLsearch.test(test_start, test_end)
 
-    # RLsearch.config['Factors'] = ['D3', 'D7', 'D14']
-    # RLsearch.config['Dim'] = len(['D3', 'D7', 'D14'])
+    RLsearch.config['Factors'] = ['D3', 'D7', 'D14']
+    RLsearch.config['Dim'] = len(['D3', 'D7', 'D14'])
     RLsearch.init(None)
     PVs_BM, _, _, _, _ = RLsearch.test(test_start, test_end)
 
