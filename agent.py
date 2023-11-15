@@ -46,9 +46,10 @@ class RLSEARCH(BackTester):
         expect = result['expect']
         sigma = result['sigma']
         mdd = result['mdd']
+        profit = result['profit']
         
         reward = sharpe + (expect / sigma) - (mdd * sigma)
-        reward = torch.tensor([reward])
+        reward = torch.tensor([profit])
         return reward
         
     def update(self, w, r):
