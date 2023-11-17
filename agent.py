@@ -23,7 +23,7 @@ class RLSEARCH(BackTester):
         self.mse = MSELoss()
 
         self.opt_r = Adam(self.rnet.parameters(), lr=1e-4)
-        self.opt_a = Adam(self.mnet.parameters(), lr=7e-3)
+        self.opt_a = Adam(self.mnet.parameters(), lr=4e-2)
 
         self.w_tensor = deque(maxlen=500)
         self.r_tensor = deque(maxlen=500)
@@ -49,7 +49,7 @@ class RLSEARCH(BackTester):
         profit = result['profit']
         
         reward = sharpe + (expect / sigma) - (mdd * sigma)
-        reward = torch.tensor([profit])
+        reward = torch.tensor([sharpe])
         return reward
         
     def update(self, w, r):
